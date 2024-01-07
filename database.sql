@@ -1,1 +1,5 @@
-CREATE TABLE
+CREATE TABLE "todo" (
+	"id" SERIAL PRIMARY KEY,
+	"task" VARCHAR (250),
+  "complete" BOOLEAN DEFAULT FALSE
+);
