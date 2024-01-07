@@ -4,6 +4,8 @@
         - Needs to be called: weekend-to-do-app
  [x] - Create a database.sql file and add the create table SQL
         -save database from Postico to project folder
+ [x] - Create TABLE and add the create table SQL
+        -save database from Postico to project folder
  [] - Add sample data with insert statements
  [] - Add insert statements into the database.sql file
  [] - Create a GET route in the todo.router.js file to return sample data
