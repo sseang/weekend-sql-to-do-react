@@ -36,11 +36,11 @@ router.post('/', (req, res) => {
     //update data
     const queryArgs = [
         sqlData.task,
-        sqlData.description,
-       
+        sqlData.description      
     ]
-    console.log('POST results', queryArgs);
 
+    //confirm and label data
+    console.log('POST results', queryArgs);
     //pool for query and data
     pool.query(queryText, queryArgs)
     //promises
@@ -80,6 +80,27 @@ router.put('/:todoID', (req, res) => {
         res.sendStatus(500);
     });
 });
+
 // DELETE
+router.delete('/:todoID', (req, res) => {
+    //var to hold data property
+    const sqlData = req.params.todoID;
+    //query to SQL
+    const queryText = `DELETE FROM "todo" WHERE "id" = $1;`;
+    //pool for query and data
+    pool.query(queryText,[sqlData])
+    //promises
+    .then((result) => {
+        //confirm good data
+        res.sendStatus(200);
+    })
+    //catch errors
+    .catch((error) => {
+        //confirm and label if error
+        console.log('OH NOO!:', error);
+        //internal errors
+        res.sendStatus(500);
+    });
+});
 
 module.exports = router;
