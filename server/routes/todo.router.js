@@ -56,8 +56,30 @@ router.post('/', (req, res) => {
         res.sendStatus(500);
     });
 });
-// PUT
 
+// PUT
+router.put('/:todoID', (req, res) => {
+    //var to hold data property
+    const sqlID = req.params.todoID;
+    //update data
+    const sqlData = req.body;
+    //query to SQL
+    const queryText = `UPDATE "todo" SET "complete" = TRUE WHERE "id" = $1;`;
+    //pool for query and data
+    pool.query(queryText,[sqlID])
+    //promises
+    .then((result) => {
+        //confirm good data
+        res.sendStatus(200);
+    })
+    //catch errors
+    .catch((error) => {
+        //confirm and label if error
+        console.log('OH $#iT!:', error);
+        //internal errors
+        res.sendStatus(500);
+    });
+});
 // DELETE
 
 module.exports = router;
