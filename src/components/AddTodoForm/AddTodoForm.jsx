@@ -3,65 +3,56 @@ import { useState } from 'react';
 import { postTodos } from '../todoApi/todo.api';
 
 function AddTodoForm(props) {
-    let [nameValue, setNameValue] = useState('');
-    let [quantityValue, setQuantityValue] = useState('');
-    let [unitValue, setUnitValue] = useState('');
+    let [taskValue, setTaskValue] = useState('');
+    let [descriptionValue, setDescriptionValue] = useState('');
+    //let [completeValue, setUnitValue] = useState('');
 
 
 const handleSubmitItem = (event) => {
     event.preventDefault();
     console.log('Values for SUBMIT:', {
-        name: nameValue,
-        quantity: quantityValue,
-        unit: unitValue,
+        task: taskValue,
+        description: descriptionValue,
+      
     });
     
     //Post Item Data
     postTodos({
-        name: nameValue,
-        quantity: quantityValue, 
-        unit: unitValue,
+        task: taskValue,
+        description: descriptionValue,
+
     })
     .then((response) => {
-        props.itemRefreshCallback();
+        props.todoRefreshCallback();
 
-        setNameValue('');
-        setQuantityValue('');
-        setUnitValue('');
+        setTaskValue('');
+        setDescriptionValue('');
+
     })
     .catch((err) => {
         console.error('Error', err);
     });
 };
 
-const clearList = () => {
-    ;
-
-
-};
 
 return (
  <section>
     <form onSubmit={handleSubmitItem}>
         <label>
-            <span>Name:</span>
-            <input id="name" onChange={(event) => setNameValue(event.target.value)}
-            value={nameValue}
+            <span>Task: </span>
+            <input id="task" onChange={(event) => setTaskValue(event.target.value)}
+            value={taskValue}
             />
         </label>
         <label>
-            <span>Quantity:</span>
-            <input id="quantity" onChange={(event) => setQuantityValue(event.target.value)}
-            value={quantityValue}
+            <span>Description: </span>
+            <input id="description" onChange={(event) => setDescriptionValue(event.target.value)}
+            value={descriptionValue}
             />
         </label>
-        <label>
-            <span>Unit:</span>
-            <input id="unit" onChange={(event) => setUnitValue(event.target.value)}
-            value={unitValue}
-            />
-        </label>
-        <button type="submit">Submit</button>
+        <p>
+        <button type="submit">Add Task</button>
+        </p>
     </form>
             {/* <h2>Shopping List</h2>
             <span id="resetButtons">
