@@ -44,7 +44,7 @@ useEffect(() => {
                     {/* <h3>Shopping List</h3> */}
                     <div id="listContainer">
                     <p>{itemData.task}</p>
-                    <p>To - Do:{itemData.description}</p>
+                    <p>To - Do:  {itemData.description}</p>
                     <p>{itemData.complete ?  '' : ''}</p>
                     </div>
                 </div>
