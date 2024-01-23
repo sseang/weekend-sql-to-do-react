@@ -3,9 +3,9 @@ import React from 'react';
 
 function Header() {
     return (
-        <div>
+      <div>
         <h1>TO DO APP</h1>
-        <h2>Hello World</h2>
+        <h2>Add Tasks</h2>
       </div>
     );
 }

@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import Header from '../Header/Header';
-import { fetchTodos } from '../todoApi/todo.api';
+import { fetchTodos, deleteTodos } from '../todoApi/todo.api';
 
 import AddTodoForm from '../AddTodoForm/AddTodoForm';
 
@@ -19,7 +19,7 @@ function App () {
         //target data
         setTaskList(response.data);
     })
-    //catch errord
+    //catch errors
     .catch((err) => {
         console.error('ERROR', err);
     });
@@ -32,7 +32,25 @@ useEffect(() => {
     //api call
     refreshTodos();
 }, []);
-  
+
+  //delete function
+  const handleClickDelete = (id) => {
+        //confirm data
+    console.log('DELETE to-dos!!:', id);
+      //api call
+    deleteTodos(id)
+    //success
+    .then((response) => {
+      refreshTodos();
+
+    })
+    //catch errors
+       .catch((err) => {
+           console.error('ERROR', err);
+       })
+};
+
+
   return (
 <div>
 <Header/>
@@ -45,7 +63,9 @@ useEffect(() => {
                     <div id="listContainer">
                     <p>{itemData.task}</p>
                     <p>To - Do:  {itemData.description}</p>
-                    <p>{itemData.complete ?  '' : ''}</p>
+                    <p>{itemData.complete ?  'COMPLETE' : ''}</p>
+                    <button onClick={(event) =>handleClickDelete(itemData.id)}>Delete</button>
+                    
                     </div>
                 </div>
                 
