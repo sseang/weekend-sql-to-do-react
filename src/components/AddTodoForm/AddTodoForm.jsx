@@ -24,6 +24,7 @@ const handleSubmitItem = (event) => {
     })
     .then((response) => {
         props.todoRefreshCallback();
+        alert('POSTED a new task!');
 
         setTaskValue('');
         setDescriptionValue('');
