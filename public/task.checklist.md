@@ -21,29 +21,29 @@
  [x] - Create a DELETE route in the todo.router.js file to return sample data
        [x] - Test the DELETE route with Postman/Postico
 
-  [] - Create HTML/App.js
-       [] - Source Axios to the App.jsx?
-       [] - Source script/index.js GET to the App.jsx?
-       [] - Source css/App.css GET to the App.jsx?
-       [] - Add useEffect and Axios GET to the App.jsx
-       [] - Display items on the page with .map ...
-       [] - Create Header
-       [] - Create Form
-              [] - Create DELETE button
-              [] - Create COMPLETE button 
-       [] - Create Table or List for rendered Objects from SQL to DOM
+  [x] - Create HTML/App.js
+       [na] - Source Axios to the App.jsx?
+       [na] - Source script/index.js GET to the App.jsx?
+       [na] - Source css/App.css GET to the App.jsx?
+       [x] - Add useEffect and Axios GET to the App.jsx
+       [x] - Display items on the page with .map ...
+       [x] - Create Header
+       [x] - Create Form
+              [x] - Create DELETE button
+              [x] - Create COMPLETE button 
+       [x] - Create Table or List for rendered Objects from SQL to DOM
 
   [] - Clien/index.js
-       [] - function to fetch data or GET request via Axios
-       [] - function for submit task or POST request via Axios
-       [] - function for complete task or UPDATE request via Axios
-       [] - function for delete task or DELETE request via Axios
-              [] - see koala/client.js
+       [x] - function to fetch data or GET request via Axios
+       [x] - function for submit task or POST request via Axios
+       [x] - function for complete task or UPDATE request via Axios
+       [x] - function for delete task or DELETE request via Axios
+              [x] - see koala/client.js
 
 
 
 
   [] - Update CSS for styling
-       [] - When a Task is complete, its visual representation should change on the front end. For example, the background of the task container could change from gray to green. The complete option should be 'checked off'. Each of these are accomplished in CSS, but will need to hook into logic to know whether or not the task is complete.
-       [] - Whether or not a Task is complete should also be stored in the database.
-       [] - Deleting a Task should remove it both from the front end as well as the Database.
+       [x] - When a Task is complete, its visual representation should change on the front end. For example, the background of the task container could change from gray to green. The complete option should be 'checked off'. Each of these are accomplished in CSS, but will need to hook into logic to know whether or not the task is complete.
+       [x] - Whether or not a Task is complete should also be stored in the database.
+       [x] - Deleting a Task should remove it both from the front end as well as the Database.

@@ -1,8 +1,22 @@
 import { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import { fetchTodos, deleteTodos, updateTodos } from "../todoApi/todo.api";
-
 import AddTodoForm from "../AddTodoForm/AddTodoForm";
+
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { lime, purple } from '@mui/material/colors';
+import Button from '@mui/material/Button';
+import { teal } from '@mui/material/colors';
+
+const color = teal;
+const theme = createTheme({
+  palette: {
+    primary: lime,
+    secondary: purple,
+  },
+});
+
+
 
 function App() {
   let [taskList, setTaskList] = useState([]);
@@ -64,7 +78,9 @@ function App() {
   };
 
   return (
-    <div>
+    
+      <ThemeProvider theme={theme}>
+    {/* <div> */}
       <Header />
       <AddTodoForm todoRefreshCallback={refreshTodos} />
 
@@ -75,18 +91,20 @@ function App() {
             <div id="listContainer">
               <p>{itemData.task}</p>
               <p>To - Do: {itemData.description}</p>
-              <p>{itemData.complete ? "COMPLETE" : ""}</p>
-              <button onClick={(event) => handleUpdateButtonClick(itemData.id)}>
+              <p className="complete"> {itemData.complete ? "COMPLETE" : ""}</p>
+              <Button variant="contained" onClick={(event) => handleUpdateButtonClick(itemData.id)}>
                 Complete
-              </button>
-              <button onClick={(event) => handleClickDelete(itemData.id)}>
+              </Button>
+              <Button variant="contained" color="secondary" sx={{ ml: 2 }} onClick={(event) => handleClickDelete(itemData.id)}>
                 Delete
-              </button>
+              </Button>
             </div>
           </div>
         );
       })}
-    </div>
+    {/* </div> */}
+
+      </ThemeProvider>
   );
 }
 
