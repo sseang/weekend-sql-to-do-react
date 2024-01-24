@@ -3,10 +3,10 @@ import Header from "../Header/Header";
 import { fetchTodos, deleteTodos, updateTodos } from "../todoApi/todo.api";
 import AddTodoForm from "../AddTodoForm/AddTodoForm";
 
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { lime, purple } from '@mui/material/colors';
-import Button from '@mui/material/Button';
-import { teal } from '@mui/material/colors';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { lime, purple } from "@mui/material/colors";
+import Button from "@mui/material/Button";
+import { teal } from "@mui/material/colors";
 
 const color = teal;
 const theme = createTheme({
@@ -15,8 +15,6 @@ const theme = createTheme({
     secondary: purple,
   },
 });
-
-
 
 function App() {
   let [taskList, setTaskList] = useState([]);
@@ -66,10 +64,10 @@ function App() {
     console.log("UPDATE to-dos!!:", id);
     //api call
     updateTodos(id)
-    //success
+      //success
       .then((response) => {
         refreshTodos();
-        //setButtonsVisible(false)
+        // toggleButton()
       })
       //catch errors
       .catch((err) => {
@@ -78,9 +76,8 @@ function App() {
   };
 
   return (
-    
-      <ThemeProvider theme={theme}>
-    {/* <div> */}
+    <ThemeProvider theme={theme}>
+      {/* <div> */}
       <Header />
       <AddTodoForm todoRefreshCallback={refreshTodos} />
 
@@ -90,21 +87,32 @@ function App() {
             {/* <h3>Shopping List</h3> */}
             <div id="listContainer">
               <p>{itemData.task}</p>
-              <p>To - Do: {itemData.description}</p>
-              <p className="complete"> {itemData.complete ? "COMPLETE" : ""}</p>
-              <Button variant="contained" onClick={(event) => handleUpdateButtonClick(itemData.id)}>
+              <p                style={{
+                  textDecoration: itemData.complete ? "line-through" : "none",
+                }}>To - Do: {itemData.description}</p>
+              <p className="complete">
+                {" "}
+                {itemData.complete ? "COMPLETE!!!" : ""}
+              </p>
+              <Button
+
+                variant="contained"
+                onClick={(event) => handleUpdateButtonClick(itemData.id)}>
                 Complete
               </Button>
-              <Button variant="contained" color="secondary" sx={{ ml: 2 }} onClick={(event) => handleClickDelete(itemData.id)}>
+              <Button
+                variant="contained"
+                color="secondary"
+                sx={{ ml: 2 }}
+                onClick={(event) => handleClickDelete(itemData.id)}>
                 Delete
               </Button>
             </div>
           </div>
         );
       })}
-    {/* </div> */}
-
-      </ThemeProvider>
+      {/* </div> */}
+    </ThemeProvider>
   );
 }
 
