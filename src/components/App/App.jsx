@@ -6,9 +6,13 @@ import AddTodoForm from "../AddTodoForm/AddTodoForm";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { lime, purple } from "@mui/material/colors";
 import Button from "@mui/material/Button";
-import { teal } from "@mui/material/colors";
 
-const color = teal;
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+
+
+
+
 const theme = createTheme({
   palette: {
     primary: lime,
@@ -81,21 +85,36 @@ function App() {
       <Header />
       <AddTodoForm todoRefreshCallback={refreshTodos} />
 
+      <Grid container spacing={6}>
       {taskList.map((itemData, dataIndex) => {
         return (
-          <div key={dataIndex}>
+          <Grid
+          item
+           key={dataIndex}>
             {/* <h3>Shopping List</h3> */}
-            <div id="listContainer">
+            <Box               borderRadius={4}
+                sx={{
+                  width: 250,
+                  height: 200,
+                  borderRadius:1,
+                  bgcolor: 'aquamarine',
+                  '&:hover': {
+                    bgcolor: '#ce93d8',
+                    // justifyContent ='center',
+                  },
+                }} id="listContainer">
               <p>{itemData.task}</p>
-              <p                style={{
+              <p
+                style={{
                   textDecoration: itemData.complete ? "line-through" : "none",
-                }}>To - Do: {itemData.description}</p>
+                }}>
+                To - Do: {itemData.description}
+              </p>
               <p className="complete">
                 {" "}
                 {itemData.complete ? "COMPLETE!!!" : ""}
               </p>
               <Button
-
                 variant="contained"
                 onClick={(event) => handleUpdateButtonClick(itemData.id)}>
                 Complete
@@ -107,10 +126,13 @@ function App() {
                 onClick={(event) => handleClickDelete(itemData.id)}>
                 Delete
               </Button>
-            </div>
-          </div>
+            </Box>
+            </Grid>
         );
       })}
+      </Grid>
+      
+
       {/* </div> */}
     </ThemeProvider>
   );
