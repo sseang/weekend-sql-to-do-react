@@ -103,10 +103,10 @@ router.delete("/:todoID", (req, res) => {
     });
 });
 
-//DELETE for resetting table- rinse and repeat
+//DELETE for resetting table- rinse and repeat, confirmed test on POSTMAN
 router.delete("/", (req, res) => {
   //var to hold data property not needed?
-  const sqlData = req.params.todoID;
+  //const sqlData = req.params.todoID;
   //query to SQL
   const queryText = `TRUNCATE TABLE "todo";`;
   //pool for query and data
