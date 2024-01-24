@@ -49,7 +49,7 @@ router.post("/", (req, res) => {
     //catch errors
     .catch((error) => {
       //confirm and label if error
-      console.log("OH SNAP!:", error);
+      console.log("OH SNAP!!!:", error);
       //internal errors
       res.sendStatus(500);
     });
@@ -74,7 +74,7 @@ router.put("/:todoID", (req, res) => {
     //catch errors
     .catch((error) => {
       //confirm and label if error
-      console.log("OH SNAP!:", error);
+      console.log("OH SHOOT!!!:", error);
       //internal errors
       res.sendStatus(500);
     });
@@ -102,5 +102,29 @@ router.delete("/:todoID", (req, res) => {
       res.sendStatus(500);
     });
 });
+
+//DELETE for resetting table- rinse and repeat
+router.delete("/", (req, res) => {
+  //var to hold data property not needed?
+  const sqlData = req.params.todoID;
+  //query to SQL
+  const queryText = `TRUNCATE TABLE "todo";`;
+  //pool for query and data
+  pool
+    .query(queryText)
+    //promises
+    .then((result) => {
+      //confirm good data
+      res.sendStatus(200);
+    })
+    //catch errors
+    .catch((error) => {
+      //confirm and label if error
+      console.log("OH SHUCKS!!:", error);
+      //internal errors
+      res.sendStatus(500);
+    });
+});
+
 
 module.exports = router;

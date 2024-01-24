@@ -16,3 +16,6 @@ export const deleteTodos = (todoID) => {
     return axios.delete(`/api/todo/${todoID}`);
 };
 
+export const resetTodos = (todoData) => {
+    return axios.delete('/api/todo', todoData);
+};

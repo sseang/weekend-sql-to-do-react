@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "../Header/Header";
-import { fetchTodos, deleteTodos, updateTodos } from "../todoApi/todo.api";
+import { fetchTodos, deleteTodos, updateTodos , resetTodos} from "../todoApi/todo.api";
 import AddTodoForm from "../AddTodoForm/AddTodoForm";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import { response } from "express";
 
 
 
@@ -79,7 +80,24 @@ function App() {
       });
   };
 
+  //DELETE RESET function
+  // const handleResetClick = () => {
+  //     //confirm data
+  //     console.log("RESET to-dos!!:");
+  //     //api call
+  //     resetTodos(response.data)
+  //       //success
+  //       .then((response) => {
+  //         refreshTodos();
+  //       })
+  //       //catch errors
+  //       .catch((err) => {
+  //         console.error("ERROR", err);
+  //       });  
+  // };
+
   return (
+    <section>
     <ThemeProvider theme={theme}>
     {/* <div> */}
       <Header />
@@ -130,13 +148,17 @@ function App() {
               </Button>
             </Box>
             </Grid>
+
         );
       })}
       {/* </Grid> */}
+      </ThemeProvider>
       
-
+      {/* <footer>
+          <button onClick={(event) => handleResetClick(itemData)}>RESET TASK</button>
+      </footer> */}
       {/* </div> */}
-    </ThemeProvider>
+    </section>
   );
 }
 
