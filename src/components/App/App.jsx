@@ -81,11 +81,13 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      {/* <div> */}
+    {/* <div> */}
       <Header />
+      {/* does not work outside of GRID */}
       <AddTodoForm todoRefreshCallback={refreshTodos} />
-
-      <Grid container spacing={6}>
+      
+      
+      {/* <Grid container spacing={6}> */}
       {taskList.map((itemData, dataIndex) => {
         return (
           <Grid
@@ -130,7 +132,7 @@ function App() {
             </Grid>
         );
       })}
-      </Grid>
+      {/* </Grid> */}
       
 
       {/* </div> */}
