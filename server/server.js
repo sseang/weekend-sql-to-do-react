@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -13,6 +15,6 @@ app.use(express.static('build'));
 app.use('/api/todo', todoRouter);
 
 /** ---------- START SERVER ---------- **/
-app.listen(PORT,  () => {
-    console.log('Listening on port: ', PORT);
+app.listen(PORT, () => {
+  console.log('Listening on port: ', PORT);
 });
